@@ -10,14 +10,15 @@ public class Agenda {
         Contacto = contacto;
     }
 
-    public boolean nuevoContacto(){
-        boolean existe = false;
+    public boolean nuevoContacto(Contacto contacto){
+        boolean nuevo = false;
 
-        if (){
-
+        if (!Contacto.contains(contacto)){
+            Contacto.add(contacto);
+            nuevo = true;
         }
 
-        return existe;
+        return nuevo;
     }
 
 }

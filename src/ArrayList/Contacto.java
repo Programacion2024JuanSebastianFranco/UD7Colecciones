@@ -1,7 +1,6 @@
 package ArrayList;
 
 import java.lang.Comparable;
-import java.util.Objects;
 
 public class Contacto implements Comparable<Contacto> {
     private String nombre;
