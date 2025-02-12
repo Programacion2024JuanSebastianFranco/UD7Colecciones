@@ -34,7 +34,7 @@ public class Contacto implements Comparable<Contacto> {
 
     public void setApellido(String apellido) {
         if (apellido == null || apellido.trim().isEmpty()) {
-            throw new IllegalArgumentException("los apellidos no puede quedar vacio");
+            throw new IllegalArgumentException("los apellidos no puede quedar vacios");
         }
         this.apellido = apellido;
     }
@@ -62,14 +62,10 @@ public class Contacto implements Comparable<Contacto> {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        Contacto contacto = (Contacto) o;
-        return Objects.equals(nombre, contacto.nombre) && Objects.equals(apellido, contacto.apellido) && Objects.equals(numero, contacto.numero);
+    public int compareTo(Contacto o) {
+        return this.apellido.compareTo((o.apellido));
     }
 
-    @Override
-    public int compareTo(Contacto o) {
-        return 0;
-    }
+
+
 }
