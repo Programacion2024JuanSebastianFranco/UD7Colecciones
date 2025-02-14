@@ -7,8 +7,8 @@ public class Contacto implements Comparable<Contacto> {
     private String apellido;
     private String numero;
 
-    private static final String FORMATO_CONTACTO = "%-15s %-15s %-15s";
-    private static final String CABECERA_CONTACTO = String.format(FORMATO_CONTACTO, "Nombre", "Apellidos", "Numero");
+    public static final String FORMATO_CONTACTO = "%-15s %-15s %-15s";
+    public static final String CABECERA_CONTACTO = String.format(FORMATO_CONTACTO, "Nombre", "Apellidos", "Numero");
 
     public Contacto(String nombre, String apellidos, String numero) {
         setNombre(nombre);
@@ -33,7 +33,7 @@ public class Contacto implements Comparable<Contacto> {
 
     public void setApellido(String apellido) {
         if (apellido == null || apellido.trim().isEmpty()) {
-            throw new IllegalArgumentException("los apellidos no puede quedar vacios");
+            throw new IllegalArgumentException("los apellidos no pueden quedar vacios");
         }
         this.apellido = apellido;
     }
@@ -62,8 +62,9 @@ public class Contacto implements Comparable<Contacto> {
 
     @Override
     public int compareTo(Contacto o) {
-        return this.apellido.compareTo((o.apellido));
+        return this.apellido.compareTo(o.apellido);
     }
+
 
 
 
