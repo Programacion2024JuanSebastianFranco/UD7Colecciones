@@ -3,6 +3,7 @@ package ArrayList;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
 
 public class Agenda {
     private ArrayList<Contacto> contactos;
@@ -36,11 +37,11 @@ public class Agenda {
         return nuevo;
     }
 
-    public boolean borrarContacto(String nopmbre, String apellido) {
+    public boolean borrarContacto(String nombre, String apellido) {
         boolean borrar = false;
 
         try {
-            Contacto contacto = new Contacto(nopmbre, apellido, "1235456789");
+            Contacto contacto = new Contacto(nombre, apellido, "1235456789");
 
             if (contactos.contains(contacto)) {
                 contactos.remove(contacto);
@@ -93,6 +94,29 @@ public class Agenda {
 
     public String ordenarPorApellido() {
         contactos.sort(COMPARAR_POR_APELLIDO);
+        return getListado();
+    }
+
+    public String buscarContacto(String nombre, String apellido) {
+        String resultado = "No se encontro el contacto";
+
+        for (Contacto contacto : contactos) {
+            if (contacto.getNombre().equalsIgnoreCase(nombre) && contacto.getApellido().equalsIgnoreCase(apellido)) {
+                resultado = getListado();
+            }
+        }
+
+        return resultado;
+    }
+
+    public String borrarPorNombre(String nombre) {
+        Iterator<Contacto> iterator = contactos.iterator();
+        while (iterator.hasNext()){
+            Contacto contacto = iterator.next();
+            if (contacto.getNombre().equalsIgnoreCase(nombre)){
+                iterator.remove();
+            }
+        }
         return getListado();
     }
 
