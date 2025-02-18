@@ -73,10 +73,10 @@ public class Agenda {
     @Override
     public String toString() {
         Collections.sort(contactos);
-        return getListado();
+        return getListado(contactos);
     }
 
-    private String getListado() {
+    private String getListado(ArrayList<Contacto> list) {
         StringBuilder formato = new StringBuilder(Contacto.FORMATO_CONTACTO);
 
         for (Contacto contacto : contactos) {
@@ -89,35 +89,35 @@ public class Agenda {
 
     public String ordenarPorNombre() {
         contactos.sort(COMPARAR_POR_NOMBRE);
-        return getListado();
+        return getListado(contactos);
     }
 
     public String ordenarPorApellido() {
         contactos.sort(COMPARAR_POR_APELLIDO);
-        return getListado();
+        return getListado(contactos);
     }
 
     public String buscarContacto(String nombre) {
-        String resultado = "No se encontro el contacto";
+        ArrayList<Contacto> correcto = new ArrayList<>();
 
         for (Contacto contacto : contactos) {
-            if (contacto.getNombre().equalsIgnoreCase(nombre) && contacto.getApellido().equalsIgnoreCase(nombre)) {
-                resultado = getListado();
+            if (contacto.getNombre().contains(nombre) || contacto.getApellido().contains(nombre)) {
+                correcto.add(contacto);
             }
         }
-        return resultado;
+
+        return getListado(correcto);
     }
 
     public String borrarPorNombre(String nombre) {
         Iterator<Contacto> iterator = contactos.iterator();
         while (iterator.hasNext()){
             Contacto contacto = iterator.next();
-            if (contacto.getNombre().equalsIgnoreCase(nombre)){
+            if (contacto.getNombre().contains(nombre)){
                 iterator.remove();
             }
         }
-        return getListado();
+        return getListado(contactos);
     }
-
 
 }
