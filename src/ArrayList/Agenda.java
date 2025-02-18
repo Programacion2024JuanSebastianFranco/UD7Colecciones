@@ -97,15 +97,14 @@ public class Agenda {
         return getListado();
     }
 
-    public String buscarContacto(String nombre, String apellido) {
+    public String buscarContacto(String nombre) {
         String resultado = "No se encontro el contacto";
 
         for (Contacto contacto : contactos) {
-            if (contacto.getNombre().equalsIgnoreCase(nombre) && contacto.getApellido().equalsIgnoreCase(apellido)) {
+            if (contacto.getNombre().equalsIgnoreCase(nombre) && contacto.getApellido().equalsIgnoreCase(nombre)) {
                 resultado = getListado();
             }
         }
-
         return resultado;
     }
 
@@ -119,5 +118,6 @@ public class Agenda {
         }
         return getListado();
     }
+
 
 }
