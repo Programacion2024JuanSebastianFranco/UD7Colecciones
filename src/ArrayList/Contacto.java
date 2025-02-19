@@ -16,6 +16,11 @@ public class Contacto implements Comparable<Contacto> {
         setNumero(numero);
     }
 
+    public Contacto(String nombre, String apellidos) {
+        setNombre(nombre);
+        setApellido(apellidos);
+    }
+
     public String getNombre() {
         return nombre;
     }

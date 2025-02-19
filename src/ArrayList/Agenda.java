@@ -22,8 +22,8 @@ public class Agenda {
         }
     };
 
-    public Agenda(ArrayList<Contacto> contacto) {
-        contactos = contacto;
+    public Agenda() {
+        this.contactos = new ArrayList<>();
     }
 
     public boolean nuevoContacto(Contacto contacto) {
@@ -37,11 +37,26 @@ public class Agenda {
         return nuevo;
     }
 
+
+    public void generarContactos() {
+        contactos.add(new Contacto("Juan", "Perez", "123456789"));
+        contactos.add(new Contacto("Ana", "Lopez", "987654321"));
+        contactos.add(new Contacto("Carlos", "Ramirez", "564738291"));
+        contactos.add(new Contacto("Beatriz", "Gomez", "847362514"));
+        contactos.add(new Contacto("Daniel", "Fernandez", "948573625"));
+        contactos.add(new Contacto("Elena", "Sanchez", "736291847"));
+        contactos.add(new Contacto("Fernando", "Torres", "192837465"));
+        contactos.add(new Contacto("Gabriela", "Diaz", "564738291"));
+        contactos.add(new Contacto("Hector", "Vega", "847362514"));
+        contactos.add(new Contacto("Isabel", "Ruiz", "948573625"));
+    }
+
+
     public boolean borrarContacto(String nombre, String apellido) {
         boolean borrar = false;
 
         try {
-            Contacto contacto = new Contacto(nombre, apellido, "1235456789");
+            Contacto contacto = new Contacto(nombre, apellido);
 
             if (contactos.contains(contacto)) {
                 contactos.remove(contacto);
@@ -77,9 +92,9 @@ public class Agenda {
     }
 
     private String getListado(ArrayList<Contacto> list) {
-        StringBuilder formato = new StringBuilder(Contacto.FORMATO_CONTACTO);
+        StringBuilder formato = new StringBuilder(Contacto.CABECERA_CONTACTO + "\n");
 
-        for (Contacto contacto : contactos) {
+        for (Contacto contacto : list) {
             formato.append(contacto.toString()).append("\n");
         }
 
