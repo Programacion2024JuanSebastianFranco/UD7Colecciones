@@ -32,6 +32,8 @@ public class Empresa {
     public void listaEmpleado(String departamento) {
         if (empresa.containsKey(departamento)) {
             System.out.println(departamento + ": " + empresa.get(departamento));
+        } else {
+            throw new IllegalArgumentException("No existe dicha empresa");
         }
     }
 
